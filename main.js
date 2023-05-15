@@ -4,6 +4,46 @@ const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
 
+//When the heart is clicked mimicServerCall()
+let hearts = document.querySelectorAll('.like-glyph')
+
+
+//Add an event listener to each of the hearts
+
+const promiseSolve = 
+hearts.forEach(heart => {
+  heart.addEventListener('click', async () => {
+    try{
+      const res = await mimicServerCall()
+      if(heart.innerText == EMPTY_HEART){
+        heart.innerText = FULL_HEART
+      heart.classList.add('activated-heart')
+      }else if(heart.innerText == FULL_HEART){
+        heart.innerText = EMPTY_HEART
+        heart.classList.remove('activated-heart')
+      }
+      return res
+    }
+    catch(error){
+      const rej = error
+      console.log("error")
+      return rej
+    }
+  })
+})
+
+// const likeButton = (answer) =>{
+//   if(answer == 'Pretend remote server notified of action!'){
+//     console.log('red button')
+//   }else{
+//     console.log('error')
+//   }
+// }
+
+
+
+
+
 
 
 
